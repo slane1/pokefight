@@ -1,4 +1,4 @@
-router.get('/:id/:info', (req, res) => {
+app.get('/:id/:info', (req, res) => {
     const { id, info } = req.params;
     const pokemon = pokemonData.find(p => p.id === Number(id));
     
