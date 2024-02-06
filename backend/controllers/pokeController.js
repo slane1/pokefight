@@ -1,32 +1,11 @@
+import { data } from "../data.js";
 
 export const getAllPokemon = (req, res) => {
-    const allPokemons = req.params.pokemon_type;
-    const filteredPokemon = Pokemons[pokemonType.toLowerCase()];
-  
-    res.send(`
-      <h1>List of ${allPokemons}</h1>
-      <ul>
-        ${filteredPokemon.map((pokemon, index) => `
-          <li>
-            <a href="/pokemon/${allPokemons}/${index}">
-              ${pokemon.name}
-            </a>
-          </li>
-        `).join('')}
-      </ul>
-    `);
-  };
-
+  res.json(data);
+};
 
 export const getPokemonById = (req, res) => {
-    const pokemonId = req.params.pokemon_id;
-    const pokemon = Pokemons[pokemonId];
-
-    res.send (`
-      <h1>${pokemon.name}</h1>
-      <ul>
-        <li>Type: ${pokemon.type}</li>
-        <li>Base: ${pokemon.base}</li>
-      </ul>
-    `);
-  };
+  const { id } = req.params;
+  const result = data.find((c) => c.id === parseInt(id));
+  res.send(result);
+};
