@@ -1,4 +1,4 @@
-export default function ListItem( {item}) {
+export default function ListItem( {item} ) {
 
     return (
         <div key={item.id}>
