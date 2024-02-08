@@ -24,7 +24,7 @@ export default function ListView() {
     if (entries.length > 1 && finalIndex >= entries.length) {
         setHasMore(false);
     }};
-    // useEffect to fetch the reduced data, makes sure that the data are fetched when entries is actually populated
+    // useEffect to fetch reduced data, makes sure that the data are fetched when entries is actually populated
     useEffect(() => {
         fetchReduced();
     }, [entries]);
