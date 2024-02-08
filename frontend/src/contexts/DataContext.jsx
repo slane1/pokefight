@@ -22,7 +22,7 @@ export default function DataContextProvider({ children }) {
         }
     };
     fetchData();
-    },[]);
+    },[api]);
 
 
     return (
