@@ -6,12 +6,13 @@ export const DataContext = createContext();
 export default function DataContextProvider({ children }) {
     const [entries, setEntries] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const [api, setApi] = useState('pokemon');
+    
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await axios.get('http://localhost:3000/pokemon');
+                const response = await axios.get(`http://localhost:3000/${api}`);
                 console.log(response.data);
                 setEntries(response.data);
                 setLoading(false);
@@ -29,7 +30,9 @@ export default function DataContextProvider({ children }) {
         value={{ 
             entries, 
             setEntries, 
-            loading }}>
+            loading,
+            api,
+            setApi }}>
         {children}
         </DataContext.Provider>
     );
