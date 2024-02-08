@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import { DataContext } from '../contexts/DataContext'
+// Import the InfiniteScroll component from the react-infinite-scroll-component package at https://github.com/ankeetmaini/react-infinite-scroll-component
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ListItem from './ListItem'
 
