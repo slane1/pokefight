@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from 'react'
 import { DataContext } from '../contexts/DataContext'
 // Import the InfiniteScroll component from the react-infinite-scroll-component package at https://github.com/ankeetmaini/react-infinite-scroll-component
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Selection from './Selection';
 import ListItem from './ListItem'
 
 export default function ListView() {
@@ -31,6 +32,7 @@ export default function ListView() {
 
     return (
     <div>
+        <Selection />
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam adipisci, numquam ratione ex provident cupiditate suscipit consequuntur cum. Enim itaque ducimus, unde nobis blanditiis autem ipsum, quidem ex magni ullam vitae! Nihil quae, qui officia praesentium deserunt aut aliquid dicta adipisci libero iste odit reprehenderit, explicabo autem neque natus eaque!</p>
         <InfiniteScroll
             dataLength={data.length}
