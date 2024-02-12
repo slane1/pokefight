@@ -2,6 +2,8 @@ import express from "express";
 import pokeRouter from "./routes/pokeRouter.js";
 import cors from "cors";
 import errorHandler from "./middlewares/errorHandler.js";
+import "./db/db.js";
+
 const app = express();
 app.use(cors());
 const port = 3000;

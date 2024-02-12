@@ -1,18 +1,24 @@
 import { data } from "../data.js";
+import Pokemon from "../models/pokemon.js";
 
-export const getAllPokemon = (req, res, next) => {
+export const getAllPokemon = async (req, res, next) => {
   try {
-    res.json(data);
+    const pokemon = await Pokemon.find();
+    if (!pokemon.length) {
+      throw { statusCode: 404, message: "no pokemons found" };
+    }
+
+    res.json(pokemon);
   } catch (error) {
     next(error);
   }
 };
 
-export const getPokemonById = (req, res, next) => {
+export const getPokemonById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = data.find((c) => c.id === parseInt(id));
-    res.json(result);
+    const pokemon = await Pokemon.findOne({ id: id });
+    res.json(pokemon);
   } catch (error) {
     next(error);
   }
@@ -47,3 +53,17 @@ export const getPokemonBaseEntries = (req, res, next) => {
     next(error);
   }
 };
+
+// import Image from "../models/image.js";
+
+// export const getAllImages = async (req, res, next) => {
+//   try {
+//     const images = await Image.find();
+//     if (!images.length) {
+//       throw { statusCode: 404, message: "Image not found" };
+//     }
+//     res.json(images);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
