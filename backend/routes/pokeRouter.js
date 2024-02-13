@@ -13,6 +13,6 @@ pokeRouter.route("/").get(getAllPokemon);
 pokeRouter.route("/:id").get(getPokemonById);
 pokeRouter.route("/:id/base/:info").get(getPokemonBaseEntries);
 pokeRouter.route("/:id/name/").get(getPokemonNameInEnglish);
-//pokeRouter.route("/:id/:detail").get(getPokemonDetail);
+pokeRouter.route("/:id/:detail").get(getPokemonDetail);
 
 export default pokeRouter;
