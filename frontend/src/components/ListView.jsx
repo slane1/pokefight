@@ -31,9 +31,10 @@ export default function ListView() {
     }, [entries]);
 
     return (
-    <div>
+    <>
         <Selection />
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam adipisci, numquam ratione ex provident cupiditate suscipit consequuntur cum. Enim itaque ducimus, unde nobis blanditiis autem ipsum, quidem ex magni ullam vitae! Nihil quae, qui officia praesentium deserunt aut aliquid dicta adipisci libero iste odit reprehenderit, explicabo autem neque natus eaque!</p>
+    <div className='Scroll Container'>
         <InfiniteScroll
             dataLength={data.length}
             next={fetchReduced}
@@ -50,5 +51,6 @@ export default function ListView() {
         ))}
         </InfiniteScroll>
     </div>
+    </>
     );
 }
