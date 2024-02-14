@@ -16,7 +16,7 @@ export default function ListView() {
     const fetchReduced = () => {
         // initial variables, fetch 30 entries each time
         const initialIndex = data.length;
-        const finalIndex = initialIndex + 30;
+        const finalIndex = initialIndex + 16;
         // slice the entries to get the reduced data
         const slicedData = entries.slice(initialIndex, finalIndex);
         // set the data to the state
@@ -31,26 +31,31 @@ export default function ListView() {
     }, [entries]);
 
     return (
-    <>
-        <Selection />
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam adipisci, numquam ratione ex provident cupiditate suscipit consequuntur cum. Enim itaque ducimus, unde nobis blanditiis autem ipsum, quidem ex magni ullam vitae! Nihil quae, qui officia praesentium deserunt aut aliquid dicta adipisci libero iste odit reprehenderit, explicabo autem neque natus eaque!</p>
-    <div className='Scroll Container'>
-        <InfiniteScroll
-            dataLength={data.length}
-            next={fetchReduced}
-            hasMore={hasMore}
-            loader={<h4>Loading...</h4>}
-            endMessage={
-            <p style={{ textAlign: 'center' }}>
-            <b>Alles angezeigt</b>
-            </p>
-            }
-        >
-        {data.map((item) => (
-            <ListItem item={item} key={item.id} />
-        ))}
-        </InfiniteScroll>
-    </div>
-    </>
-    );
+        <>
+          <Selection/>
+          <p className='text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8'>POKE INDEX</p>
+          <div className='overflow-hidden'>
+            <InfiniteScroll
+              dataLength={data.length}
+              next={fetchReduced}
+              hasMore={hasMore}
+              loader={<h4>Loading...</h4>}
+              endMessage={
+                <p className="text-left">
+                  <b>Alles angezeigt</b>
+                </p>
+              }
+              className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-blue-800 rounded p-4 md:p-8 lg:p-10'
+            >
+              {data.map((item) => (
+                <ListItem
+                  item={item}
+                  key={item.id}
+                  className="aspect-w-1 aspect-h-1 md:aspect-w-1 md:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1"
+                />
+              ))}
+            </InfiniteScroll>
+          </div>
+        </>
+      );
 }

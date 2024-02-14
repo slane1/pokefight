@@ -1,42 +1,38 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@layer utilities {
+  .bg-gradient {
+    @apply bg-gradient-to-r from-gold to-blue-500;
   }
-  to {
-    transform: rotate(360deg);
+
+  .bgBorder-gradient {
+    @apply bg-gradient-to-r from-black to-purple-500;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.border-gradient {
+  border: double 8px transparent;
+  border-radius: 10px;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    rgb(12, 5, 19),
+    rgb(32, 13, 34)
+  );
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.Imageborder-gradient {
+  border: double 2px transparent;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    to right,
+    rgb(49, 24, 75),
+    rgb(32, 13, 34)
+  );
 }
