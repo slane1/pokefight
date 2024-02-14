@@ -1,12 +1,15 @@
 import { useState, useContext, useEffect } from 'react'
 import { DataContext } from '../contexts/DataContext'
+import { FightContext } from '../contexts/FightContext'
 // Import the InfiniteScroll component from the react-infinite-scroll-component package at https://github.com/ankeetmaini/react-infinite-scroll-component
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Selection from './Selection';
 import ListItem from './ListItem'
+import {Link} from "react-router-dom"
 
 export default function ListView() {
     const { entries } = useContext(DataContext);
+    const { fighter } = useContext(FightContext);
     // useState for storing the new reduced data for infinite scroll component
     const [data, setData] = useState([]);
     // useState for checking if there is more data to fetch or end of array has been reached
@@ -32,10 +35,17 @@ export default function ListView() {
 
     return (
         <>
+
           <Selection/>
           <p className='text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8'>POKE INDEX</p>
           <div className='overflow-hidden'>
-            <InfiniteScroll
+          {fighter.length ? <Link to="arena"> <button>fight</button> </Link> : null}
+          {/* {fighter !== null && (<>
+          <Link to="arena">
+            <button classsName="flex">fight2</button>
+          </Link>
+          </>)} */}
+            {/* <InfiniteScroll
               dataLength={data.length}
               next={fetchReduced}
               hasMore={hasMore}
@@ -46,7 +56,7 @@ export default function ListView() {
                 </p>
               }
               className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-blue-800 rounded p-4 md:p-8 lg:p-10'
-            >
+            > */}
               {data.map((item) => (
                 <ListItem
                   item={item}
@@ -54,8 +64,9 @@ export default function ListView() {
                   className="aspect-w-1 aspect-h-1 md:aspect-w-1 md:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1"
                 />
               ))}
-            </InfiniteScroll>
+            {/* </InfiniteScroll> */}
           </div>
+
         </>
       );
 }

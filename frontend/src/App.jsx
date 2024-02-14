@@ -1,19 +1,28 @@
 import { useState, useContext } from 'react'
 import { DataContext } from './contexts/DataContext.jsx'
+import FightContextProvider from './contexts/FightContext.jsx'
 import './App.css'
 import ListView from './components/ListView.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import Arena from "./components/Arena/Arena.jsx"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+
 
 function App() {
-  const [count, setCount] = useState(0)
-  const {api, setApi} = useContext(DataContext);
   
   return (
     <div>
-      <Header />
-      <ListView />
-      <Footer />
+      <BrowserRouter>
+        <FightContextProvider>
+          <Header />
+                <Routes>
+                <Route path="/" element={<ListView />}/>
+                <Route path="/arena" element={<Arena />}/>
+                </Routes>
+          <Footer />
+        </FightContextProvider>
+      </BrowserRouter>
     </div>
   )
 }

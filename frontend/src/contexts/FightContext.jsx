@@ -2,18 +2,21 @@ import React, { createContext, useState, useEffect } from 'react';
 export const FightContext = createContext();
 
 export default function FightContextProvider({ children }) {
-    const [fighter, setFighter] = useState([
-        {
-            name: 'Pikachu',
-            type: 'Electric',
-            hp: 35,
-            attack: 55,
-            defense: 40,
-            speed: 90,
-        }
-    ]);
+    const [fighter, setFighter] = useState([])
+    // const [fighter, setFighter] = useState([
+    //     {
+    //         id: 25,
+    //         name: 'Pikachu',
+    //         type: 'Electric',
+    //         hp: 35,
+    //         attack: 55,
+    //         defense: 40,
+    //         speed: 90,
+    //     }
+    // ]);
     const [opponent, setOpponent] = useState([
         {
+            id: 4,
             name: 'Charmander',
             type: 'Fire',
             hp: 39,
@@ -27,7 +30,7 @@ export default function FightContextProvider({ children }) {
         return Math.floor(Math.random() * max);
     }
     
-    function createOppeonent(entries){
+    function createOpponent(entries){
         const opponentList = entries;
         const randomIndex = getRandomInt(opponentList.length);
         const randomOpponent = opponentList[randomIndex];
@@ -41,7 +44,7 @@ export default function FightContextProvider({ children }) {
             fighter, 
             setFighter,
             opponent,
-            createOppeonent
+            createOpponent
             }}>
         {children}
         </FightContext.Provider>
