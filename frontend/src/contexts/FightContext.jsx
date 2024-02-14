@@ -41,7 +41,7 @@ export default function FightContextProvider({ children }) {
             fighter, 
             setFighter,
             opponent,
-            setOpponent
+            createOppeonent
             }}>
         {children}
         </FightContext.Provider>
