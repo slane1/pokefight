@@ -1,12 +1,26 @@
+import { FightContext } from "../contexts/FightContext";
+import { useContext } from "react";
+
+
 export default function ListItem( {item} ) {
     const artworkurl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`
     // TODO: Place artworkurl in the img src={} attribute and remove it from alt={} attribute
     // TODO: Place the item.name.english in the img alt=""
+
+    const {setFighter} = useContext(FightContext);
+
+const selectPokemon = (item) =>{
+    const {name, type, base, id} = item
+    console.log("selected id: ", item )
+    setFighter([{id: id, name: name.english, type: type[0], hp: base.HP, attack: base.Attack, defense: base.Defense, speed: base.Speed}])
+} 
+
+
     return (
         <div key={item.id} className="itemcard rounded-md bgBorder-gradient border-gradient">
             <div className="imgcontainer bgBorder-gradient border border-solid p-4 Imageborder-gradient rounded-md bg-white bg-opacity-50">
                 <img src={artworkurl} alt={item.name.english}/>
-                <p className="text-sm text-gold font-bold text-xs font-mono">PokeID {item.id}</p>
+                <p className="text-sm text-gold font-bold font-mono">PokeID {item.id}</p>
             </div>
             <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient">
             <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300">
@@ -23,10 +37,12 @@ export default function ListItem( {item} ) {
                 <div className="types text-sm p-3 flex">
                     <p className="text-black font-bold font-mono">Types:</p>
                     {item.type.map((item) => (
-                        <p>{item}</p>
+                        <p>{item} </p>
                     ))}
+            <button onClick={() => selectPokemon(item)}>Select</button>
                 </div>
             </div>
         </div>
     );
 }
+

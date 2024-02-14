@@ -4,10 +4,11 @@ import App from './App.jsx'
 import './index.css'
 import DataContextProvider from './contexts/DataContext.jsx'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <React.StrictMode>  
     <DataContextProvider>
       <App />
     </DataContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
