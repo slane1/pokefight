@@ -4,20 +4,12 @@ import { FightContext } from "../../contexts/FightContext"
 export default function Opponents() {
     const {opponent, fighter} = useContext(FightContext);
     const myfighter = fighter[0];
-    const myopponent = opponent;
+    const myopponent = opponent[0];
     const myfighterart = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${myfighter.id}.png`
     const myopponentart = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${myopponent.id}.png`
-    useEffect(() => {
-      
-      console.log("Figher", fighter);
-      console.log("Oppo", opponent);
-    
-      return () => {
-        
-      }
-    }, [fighter])
-    
 
+    console.log("fighter and opponent",fighter, opponent);
+    
     return (
         <>
          {fighter.length ? <div className="pokemons">
