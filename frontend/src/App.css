@@ -69,7 +69,6 @@
   font-style: italic;
   color: #ffffff;
   pointer-events: none; /* Hinzugefügt */
-
 }
 
 .sexyBorder:hover::before {
