@@ -101,16 +101,16 @@ export default function ListView() {
       </a>
       <div className="overflow-hidden">
         {fighter.length ? (
-          <Link to="arena">
+          <Link to="ben">
             <button className="start-fight-button">
               fight with {fighter[0].name}
             </button>
           </Link>
         ) : null}
         <div className=" flex justify-center items-center gap-5">
-       <div>
-       <Link to="/winner">Winner History</Link>
-      </div>  
+          <div>
+            <Link to="/winner">Winner History</Link>
+          </div>
           <form
             onSubmit={(e) => handleSubmit(e)}
             className="w-3/12 h-16 rounded-full border-gray-400 border-solid border flex flex-row items-center"
@@ -123,7 +123,9 @@ export default function ListView() {
               name="pokemon"
               value={searchData.pokemon}
             />
-            <button className="p-3 rounded-full hover:bg-teal-400">search</button>
+            <button className="p-3 rounded-full hover:bg-teal-400">
+              search
+            </button>
           </form>
           <div>
             <button
