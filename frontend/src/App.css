@@ -17,7 +17,7 @@
 }
 
 .border-gradient {
-  border: double 8px transparent;
+  border: double 4px transparent;
   border-radius: 10px;
   border-image-slice: 1;
   border-image-source: linear-gradient(
@@ -25,16 +25,65 @@
     rgb(12, 5, 19),
     rgb(32, 13, 34)
   );
+  box-shadow: 0 -4px 6px rgba(141, 38, 201, 0.521);
 }
 
-.Imageborder-gradient {
-  border: double 2px transparent;
+.Imageborder-shadow {
+  border: double 4px transparent;
   border-image-slice: 1;
   border-image-source: linear-gradient(
     to right,
-    rgb(49, 24, 75),
+    rgb(33, 13, 53),
     rgb(32, 13, 34)
   );
+  box-shadow: 0 -4px 6px rgba(141, 38, 201, 0.521);
+}
+
+.sexyBorder {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.sexyBorder::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#4b2072, #f006d1);
+  animation: animate 5s linear infinite;
+}
+
+.sexyBorder::after {
+  content: "SELECT";
+  position: absolute;
+  inset: 2px;
+  background: #000000;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: monospace;
+  font-style: italic;
+  color: #ffffff;
+}
+
+.sexyBorder:hover::before {
+  animation-play-state: paused;
+}
+
+.sexyBorder:hover::after {
+  background: #000000;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .start-fight-button {

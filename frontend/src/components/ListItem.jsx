@@ -27,16 +27,16 @@ export default function ListItem({ item }) {
   return (
     <div
       key={item.id}
-      className="itemcard rounded-md bgBorder-gradient border-gradient"
+      className="itemcard bgBorder-gradient border-gradient"
     >
-      <div className="imgcontainer bgBorder-gradient border border-solid p-4 Imageborder-gradient rounded-md bg-white bg-opacity-50">
-        <img src={artworkurl} alt={item.name.english} />
+      <div className="imgcontainer Imageborder-shadow">
+        <img src={artworkurl} alt={item.name.english} className="flex border-rounded-md rounded-md" />
         <p className="text-sm text-gold font-bold font-mono">
           PokeID {item.id}
         </p>
       </div>
-      <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient">
-        <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300">
+      <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient Imageborder-shadow">
+        <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300 ">
           <h4 className="text-black text-center font-bold text-sm font-mono p-2">
             {item.name.english}
           </h4>
@@ -62,7 +62,11 @@ export default function ListItem({ item }) {
           {item.type.map((item) => (
             <p key={item}>{item} </p>
           ))}
-          <button onClick={() => selectPokemon(item)}>Select</button>
+                    <div className="sexyBorder relative">
+                  <button onClick={() => selectPokemon(item)}>Select</button>
+                    </div>
+                    
+                        
         </div>
       </div>
     </div>
