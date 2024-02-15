@@ -36,7 +36,7 @@ export default function ListItem({ item }) {
           PokeID {item.id}
         </p>
       </div>
-      <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient Imageborder-shadow">
+      <div className="textcontainer border border-solid border-black p-6 rounded-bl rounded-br bg-red-300 bg-gradient Imageborder-shadow">
         <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300 ">
           <h4 className="text-black text-center font-bold text-sm font-mono p-2">
             {item.name.english}

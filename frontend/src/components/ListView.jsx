@@ -120,12 +120,7 @@ export default function ListView() {
               name="pokemon"
               value={searchData.pokemon}
             />
-            <button
-              className="p-3 rounded-full
-           hover:bg-teal-400 "
-            >
-              search
-            </button>
+            <button className="p-3 rounded-full hover:bg-teal-400">search</button>
           </form>
           <div>
             <button
@@ -165,7 +160,7 @@ export default function ListView() {
               <b>Alles angezeigt</b>
             </p>
           }
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-blue-800 rounded p-4 md:p-8 lg:p-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-blue-600 shadow-lg bg-opacity-50 rounded-lg md:p-8 lg:p-10"
         >
           {data.map((item) => (
             <ListItem
