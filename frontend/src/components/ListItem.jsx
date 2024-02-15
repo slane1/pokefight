@@ -59,10 +59,8 @@ export default function ListItem({ item }) {
         </div>
 
         <div className="types text-sm p-3 flex">
-          <p className="text-black font-bold font-mono">Types:</p>
-          {item.type.map((item) => (
-            <p key={item}>{item} </p>
-          ))}
+          <p className="text-black font-bold font-mono">Type:</p>
+          <p>{item.type[0]}</p>
           <div className="sexyBorder relative">
             <button onClick={() => selectPokemon(item)}>Select</button>
           </div>
