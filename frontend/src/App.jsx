@@ -16,10 +16,10 @@ function App() {
       <BrowserRouter>
         <FightContextProvider>
           <Header />
-                <Routes>
-                <Route path="/" element={<ListView />}/>
-                <Route path="/arena" element={<Arena />}/>
-                </Routes>
+            <Routes>
+              <Route path="/" element={<ListView />}/>
+              <Route path="/arena" element={<Arena />}/>
+            </Routes>
           <Footer />
         </FightContextProvider>
       </BrowserRouter>
