@@ -108,6 +108,9 @@ export default function ListView() {
           </Link>
         ) : null}
         <div className=" flex justify-center items-center gap-5">
+       <div>
+       <Link to="/winner">Winner History</Link>
+      </div>  
           <form
             onSubmit={(e) => handleSubmit(e)}
             className="w-3/12 h-16 rounded-full border-gray-400 border-solid border flex flex-row items-center"
