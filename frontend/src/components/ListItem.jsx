@@ -25,12 +25,13 @@ export default function ListItem({ item }) {
   };
 
   return (
-    <div
-      key={item.id}
-      className="itemcard bgBorder-gradient border-gradient"
-    >
+    <div key={item.id} className="itemcard bgBorder-gradient border-gradient">
       <div className="imgcontainer Imageborder-shadow">
-        <img src={artworkurl} alt={item.name.english} className="flex border-rounded-md rounded-md" />
+        <img
+          src={artworkurl}
+          alt={item.name.english}
+          className="flex border-rounded-md rounded-md"
+        />
         <p className="text-sm text-gold font-bold font-mono">
           PokeID {item.id}
         </p>
@@ -62,11 +63,9 @@ export default function ListItem({ item }) {
           {item.type.map((item) => (
             <p key={item}>{item} </p>
           ))}
-                    <div className="sexyBorder relative">
-                  <button onClick={() => selectPokemon(item)}>Select</button>
-                    </div>
-                    
-                        
+          <div className="sexyBorder relative">
+            <button onClick={() => selectPokemon(item)}>Select</button>
+          </div>
         </div>
       </div>
     </div>
