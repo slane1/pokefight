@@ -36,3 +36,17 @@
     rgb(32, 13, 34)
   );
 }
+
+.start-fight-button {
+  position: fixed;
+  bottom: 4rem;
+  right: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5.5rem;
+  width: 5.5rem;
+  background-color: yellow;
+  border-radius: 50%;
+  z-index: 10;
+}
