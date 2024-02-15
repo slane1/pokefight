@@ -32,17 +32,17 @@ export default function Opponents() {
     function fight(attacker, defender) {
         if (attacker === myfighter) {
             const damage = damageCalculation(attacker, defender);
-            if (fighterHP - damage <= 0) {
+            if (opponentHP - damage <= 0) {
                 setWinner(myfighter.name);
             } else {
-            setFighterHP(prev => prev - damage);
+            setOpponentHP(prev => prev - damage);
             }
         } else {
             const damage = damageCalculation(attacker, defender);
-            if (opponentHP - damage <= 0) {
+            if (fighterHP - damage <= 0) {
                 setWinner(myopponent.name);
             } else {
-            setOpponentHP(prev => prev - damage);
+            setFighterHP(prev => prev - damage);
             }
         }
     }
