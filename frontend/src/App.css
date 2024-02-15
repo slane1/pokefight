@@ -52,6 +52,7 @@
   height: 100%;
   background: linear-gradient(#4b2072, #f006d1);
   animation: animate 5s linear infinite;
+  pointer-events: none; /* Hinzugefügt */
 }
 
 .sexyBorder::after {
@@ -67,6 +68,8 @@
   font-family: monospace;
   font-style: italic;
   color: #ffffff;
+  pointer-events: none; /* Hinzugefügt */
+
 }
 
 .sexyBorder:hover::before {
