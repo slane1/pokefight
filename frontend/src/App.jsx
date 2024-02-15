@@ -5,7 +5,8 @@ import './App.css'
 import ListView from './components/ListView.jsx'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
-import Arena from "./components/Arena/Arena.jsx"
+import LastWinner from './components/LastWinner.jsx'
+import Opponents from "./components/Arena/Opponents.jsx"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 
@@ -18,7 +19,8 @@ function App() {
           <Header />
             <Routes>
               <Route path="/" element={<ListView />}/>
-              <Route path="/arena" element={<Arena />}/>
+              <Route path="/arena" element={<Opponents />}/>
+              <Route path="/winner" element={<LastWinner />}/>
             </Routes>
           <Footer />
         </FightContextProvider>
