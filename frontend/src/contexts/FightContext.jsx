@@ -3,27 +3,17 @@ export const FightContext = createContext();
 
 export default function FightContextProvider({ children }) {
     const [fighter, setFighter] = useState([])
-    // const [fighter, setFighter] = useState([
-    //     {
-    //         id: 25,
-    //         name: 'Pikachu',
-    //         type: 'Electric',
-    //         hp: 35,
-    //         attack: 55,
-    //         defense: 40,
-    //         speed: 90,
-    //     }
-    // ]);
+
     const [opponent, setOpponent] = useState([
-        {
-            id: 4,
-            name: 'Charmander',
-            type: 'Fire',
-            hp: 39,
-            attack: 52,
-            defense: 43,
-            speed: 65,
-        }
+        // {
+        //     id: 4,
+        //     name: 'Charmander',
+        //     type: 'Fire',
+        //     hp: 39,
+        //     attack: 52,
+        //     defense: 43,
+        //     speed: 65,
+        // }
     ]);
 
     function getRandomInt(max) {
@@ -34,7 +24,18 @@ export default function FightContextProvider({ children }) {
         const opponentList = entries;
         const randomIndex = getRandomInt(opponentList.length);
         const randomOpponent = opponentList[randomIndex];
-        setOpponent(randomOpponent);
+        console.log(randomOpponent);
+        setOpponent([
+            {
+              id: randomOpponent.id,
+              name: randomOpponent.name.english,
+              type: randomOpponent.type[0],
+              hp: randomOpponent.base.HP,
+              attack: randomOpponent.base.Attack,
+              defense: randomOpponent.base.Defense,
+              speed: randomOpponent.base.Speed,
+            },
+          ]);
     }
 
 

@@ -1,12 +1,15 @@
 import { FightContext } from "../contexts/FightContext";
 import { useContext } from "react";
+import { DataContext } from "../contexts/DataContext";
 
 export default function ListItem({ item }) {
+  const { entries } = useContext(DataContext);
   const artworkurl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.id}.png`;
   // TODO: Place artworkurl in the img src={} attribute and remove it from alt={} attribute
   // TODO: Place the item.name.english in the img alt=""
 
   const { setFighter } = useContext(FightContext);
+  const { createOpponent } = useContext(FightContext);
 
   const selectPokemon = (item) => {
     const { name, type, base, id } = item;
@@ -62,7 +65,7 @@ export default function ListItem({ item }) {
           <p className="text-black font-bold font-mono">Type:</p>
           <p>{item.type[0]}</p>
           <div className="sexyBorder relative">
-            <button onClick={() => selectPokemon(item)}>Select</button>
+            <button onClick={() => {selectPokemon(item); createOpponent(entries)}}>Select</button>
           </div>
         </div>
       </div>
