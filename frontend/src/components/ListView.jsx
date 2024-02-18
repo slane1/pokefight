@@ -119,7 +119,7 @@ export default function ListView() {
             />
             <button className="ml-1 p-3 pr-5 rounded-r-full hover:bg-teal-400">Search</button>
           </form>
-          <div className="flex gap-10 ">
+          <div className="flex gap-10 mb-5">
             <button
               onClick={() => handleFilterChange("type", "Grass")}
               className={`simple
