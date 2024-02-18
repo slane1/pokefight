@@ -93,14 +93,10 @@ export default function Opponents() {
 
 
   return (
-    <div className="h-screen">
-      <a href="/">
-        <p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">
-          POKE Fight
-        </p>
-      </a>
+    <div className="flex flex-col justify-center">
+      <a href="/"><p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">POKE Fight</p></a>
       {fighter.length ? (
-        <div className="flex justify-center w-5/6  ">
+        <div className="flex justify-around gap-20">
           <div className="fighter w-2/6 flex justify-center">
             <div
               key={myfighter.id}
@@ -135,15 +131,14 @@ export default function Opponents() {
               </div>
             </div>
           </div>
-          <div className="w-2/6 ">
-            
+          
+          <div className="">
+          {fightlog.length ? <div className="w-6/6 h-4/6"> {fightlog.map((round, index) => <p key={index} >{round}</p>)}    </div>  : null}
+          {winner ? <div><p>The winner is: {winner}</p> <a href="/">Try another Pokemon:</a></div> : ""}
             <button className="w-2/6" onClick={fight}>Fight!</button>
-              
-            {fightlog.length ? <div className="w-6/6 h-4/6"> {fightlog.map((round, index) => <p key={index} >{round}</p>)}    </div>  : null}
-            {winner ? <div><p>The winner is: {winner}</p> <a href="/">Try another Pokemon:</a></div> : ""}
-            
           </div>
-          <div className="opponent w-2/6">
+
+          <div className="opponent">
             <div
               key={myopponent.id}
               className=" itemcard rounded-md bgBorder-gradient border-gradient"

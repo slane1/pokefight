@@ -101,7 +101,7 @@ export default function ListView() {
       </a>
       <div className="overflow-hidden">
         {fighter.length ? (
-          <Link to="ben">
+          <Link to="pokefight">
             <button className="start-fight-button">
               fight with {fighter[0].name}
             </button>
