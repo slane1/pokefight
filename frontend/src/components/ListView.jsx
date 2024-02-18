@@ -57,7 +57,9 @@ export default function ListView() {
         prevParams.delete(key);
       } else {
         prevParams.set(key, value);
+        console.log("Key: ", key, "Value: ", value);
         setData([]);
+        setHasMore(false);
       }
       return prevParams;
     });
@@ -148,11 +150,6 @@ export default function ListView() {
           next={fetchReduced}
           hasMore={hasMore}
           loader={<h4>Loading...</h4>}
-          endMessage={
-            <p className="text-left">
-              <b>Alles angezeigt</b>
-            </p>
-          }
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 bg-blue-600 shadow-lg bg-opacity-50 rounded-lg md:p-8 lg:p-10"
         >
           {data.map((item) => (
