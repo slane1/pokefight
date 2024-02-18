@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<ListView />} />
             <Route path="/arena" element={<Opponents />} />
             <Route path="/winner" element={<LastWinner />} />
-            <Route path="/ben" element={<Arena />} />
+            <Route path="/pokefight" element={<Arena />} />
           </Routes>
           <Footer />
         </FightContextProvider>
