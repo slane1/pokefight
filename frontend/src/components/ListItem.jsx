@@ -30,11 +30,7 @@ export default function ListItem({ item }) {
   return (
     <div key={item.id} className="itemcard bgBorder-gradient border-gradient">
       <div className="imgcontainer Imageborder-shadow">
-        <img
-          src={artworkurl}
-          alt={item.name.english}
-          className="flex border-rounded-md rounded-md"
-        />
+        <img src={artworkurl} alt={item.name.english} className="flex border-rounded-md rounded-md"/>
         <p className="text-sm text-gold font-bold font-mono">
           PokeID {item.id}
         </p>
@@ -59,13 +55,12 @@ export default function ListItem({ item }) {
           <h4 className="text-black text-left text-xs font-mono">
             Sp. Attack {item.base["Sp. Attack"]}
           </h4>
-        </div>
-
-        <div className="types text-sm p-3 flex">
+          <div className="types text-sm p-3 flex">
           <p className="text-black font-bold font-mono">Type:</p>
           <p>{item.type[0]}</p>
-          <div className="sexyBorder relative">
-            <button onClick={() => {selectPokemon(item); createOpponent(entries)}}>Select</button>
+          </div>
+          <div className="sexyBorder mt-5">
+          <button onClick={() => {selectPokemon(item); createOpponent(entries)}}>Select</button>
           </div>
         </div>
       </div>

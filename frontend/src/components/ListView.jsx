@@ -94,11 +94,7 @@ export default function ListView() {
   return (
     <>
       <Selection />
-      <a href="/">
-        <p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">
-          POKE INDEX
-        </p>
-      </a>
+      <a href="/"><p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">POKE INDEX</p></a>
       <div className="overflow-hidden">
         {fighter.length ? (
           <Link to="pokefight">
@@ -107,10 +103,8 @@ export default function ListView() {
             </button>
           </Link>
         ) : null}
-        <div className=" flex justify-center items-center gap-5">
-          <div>
-            <Link to="/winner">Winner History</Link>
-          </div>
+        <div className="flex flex-col justify-center items-center gap-5">
+          <div><Link to="/winner">Winner History</Link></div>
           <form
             onSubmit={(e) => handleSubmit(e)}
             className="w-3/12 h-16 rounded-full border-gray-400 border-solid border flex flex-row items-center"
