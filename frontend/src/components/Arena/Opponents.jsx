@@ -122,12 +122,14 @@ export default function Opponents() {
         {winner ? (
           <div className="mt-3">
             <p>The winner is: {winner}</p>
-            <a href="/">Try another Pokemon:</a>
+            <button className="mt-5"><Link className="text-white" to="/">Try another Pokemon</Link></button>
           </div>
         ) : null}
+        {!winner ? (
         <button className="mt-5" onClick={fight}>
-          Fight!
-        </button>
+        Fight!
+      </button>
+        ) : null}
       </div>
       <div className="opponent">
         <div key={myopponent.id} className="itemcard rounded-md bgBorder-gradient border-gradient">
