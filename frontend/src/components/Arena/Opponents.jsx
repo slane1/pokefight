@@ -3,6 +3,7 @@ import { FightContext } from "../../contexts/FightContext";
 import {Link} from "react-router-dom"
 import axios from "axios"
 
+
 export default function Opponents() {
   const { opponent, fighter } = useContext(FightContext);
   const myfighter = fighter[0];
@@ -17,7 +18,6 @@ export default function Opponents() {
   useEffect(() => {
     if (winner) {
       console.log(`${winner} wins!`);
-
     } else {
       const fighterlife = percent(fighterHP, myfighter.hp);
       const opponentlife = percent(opponentHP, myopponent.hp);
@@ -30,7 +30,7 @@ export default function Opponents() {
     const postWinner = async () => {
       //setLoading(true);
       try {
-        const response = await axios.post(`http://localhost:3000/winner/`, {winner: winner, opponent: myopponent.name});
+        const response = await axios.post(`http://localhost:3000/winner/`, {winner: winner, opponent: myopponent, fighter: myfighter});
         console.log(response);
         //setEntries(response.data);
         //setLoading(false);
@@ -118,7 +118,7 @@ export default function Opponents() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col text-center align-middle justify-center">
+      <div className="flex flex-col min-w-80 text-center align-baseline justify-around">
         {fightlog.length ? (
           <div className="flex flex-col align-middle justify-center">
             {fightlog.map((round, index) => (
