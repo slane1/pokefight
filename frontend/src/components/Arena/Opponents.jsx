@@ -17,7 +17,6 @@ export default function Opponents() {
   useEffect(() => {
     if (winner) {
       console.log(`${winner} wins!`);
-
     } else {
       const fighterlife = percent(fighterHP, myfighter.hp);
       const opponentlife = percent(opponentHP, myopponent.hp);
@@ -30,7 +29,7 @@ export default function Opponents() {
     const postWinner = async () => {
       //setLoading(true);
       try {
-        const response = await axios.post(`http://localhost:3000/winner/`, {winner: winner, opponent: myopponent.name});
+        const response = await axios.post(`http://localhost:3000/winner/`, {winner: winner, opponent: myopponent, fighter: myfighter});
         console.log(response);
         //setEntries(response.data);
         //setLoading(false);
@@ -60,14 +59,14 @@ export default function Opponents() {
     if (attacker === myfighter) {
       const damage = damageCalculation(attacker, defender);
       if (opponentHP - damage <= 0) {
-        setWinner(myfighter.name);
+        setWinner(myfighter.id);
       } else {
         setOpponentHP((prev) => prev - damage);
       }
     } else {
       const damage = damageCalculation(attacker, defender);
       if (fighterHP - damage <= 0) {
-        setWinner(myopponent.name);
+        setWinner(myopponent.id);
       } else {
         setFighterHP((prev) => prev - damage);
       }
