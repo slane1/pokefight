@@ -3,6 +3,7 @@ import { FightContext } from "../../contexts/FightContext";
 import {Link} from "react-router-dom"
 import axios from "axios"
 
+
 export default function Opponents() {
   const { opponent, fighter } = useContext(FightContext);
   const myfighter = fighter[0];
@@ -117,7 +118,7 @@ export default function Opponents() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col text-center align-middle justify-center">
+      <div className="flex flex-col min-w-80 text-center align-baseline justify-around">
         {fightlog.length ? (
           <div className="flex flex-col align-middle justify-center">
             {fightlog.map((round, index) => (
