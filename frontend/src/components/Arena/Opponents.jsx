@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { FightContext } from "../../contexts/FightContext";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import typeMatchups from "../../utility/types";
 import axios from "axios"
 
 
@@ -39,14 +40,26 @@ export default function Opponents() {
   }}, [winner])
   
 
-  
-
   function percent(value, total) {
     return (value / total) * 100;
   }
 
+
+  function checkType(attacker, defender) {
+    const attackerType = attacker.type.toLowerCase();
+    const defenderType = defender.type.toLowerCase();
+    const multiplier = typeMatchups[attackerType][defenderType];
+    if (multiplier === undefined) {
+      console.log("Fallback triggered");
+        return 1;
+    }
+    console.log(multiplier);
+    return multiplier;
+}
+
   function damageCalculation(attacker, defender) {
-    const damage = Math.floor((attacker.attack / defender.defense) * 10);
+    const multiply = checkType(attacker, defender);
+    const damage = Math.floor(((attacker.attack / defender.defense) * 10) * multiply);
     return damage;
   }
 
@@ -122,7 +135,7 @@ export default function Opponents() {
         {winner ? (
           <div className="mt-3">
             <p>The winner is: {winner}</p>
-            <button className="mt-5"><Link className="text-white" to="/">Try another Pokemon</Link></button>
+            <button className="mt-5 text-white"><Link className="text-white" to="/">Try another Pokemon</Link></button>
           </div>
         ) : null}
         {!winner ? (
