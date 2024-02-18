@@ -107,21 +107,19 @@ export default function ListView() {
           <div><Link to="/winner">Winner History</Link></div>
           <form
             onSubmit={(e) => handleSubmit(e)}
-            className="w-3/12 h-16 rounded-full border-gray-400 border-solid border flex flex-row items-center"
+            className="h-16 rounded-full border-gray-400 border-solid border flex flex-row"
           >
             <input
               type="text"
               placeholder="Search for Pokemon"
-              className="focus:outline-none bg-transparent"
+              className="ml-5 focus:outline-none bg-transparent"
               onChange={onChange}
               name="pokemon"
               value={searchData.pokemon}
             />
-            <button className="p-3 rounded-full hover:bg-teal-400">
-              search
-            </button>
+            <button className="ml-1 p-3 pr-5 rounded-r-full hover:bg-teal-400">Search</button>
           </form>
-          <div>
+          <div className="flex gap-10 mb-5">
             <button
               onClick={() => handleFilterChange("type", "Grass")}
               className={`simple
@@ -136,17 +134,13 @@ export default function ListView() {
             >
               <p>Groud</p>
             </button>
-            <a href="/">
-              <button
-                className={`justify-self-auto ${
-                  typeFilter
-                    ? "opacity-100 pointer-events-auto"
-                    : "opacity-0 pointer-events-none"
-                }`}
-              >
-                Clear filter
-              </button>
-            </a>
+            {typeFilter && (
+              <a href="/">
+                <button className="justify-self-auto opacity-100 pointer-events-auto">
+                  Clear filter
+                </button>
+              </a>
+            )}
           </div>
         </div>
         <InfiniteScroll
