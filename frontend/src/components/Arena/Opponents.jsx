@@ -5,7 +5,7 @@ import axios from "axios"
 
 
 export default function Opponents() {
-  const { opponent, fighter } = useContext(FightContext);
+  const { opponent, fighter, createOpponent } = useContext(FightContext);
   const myfighter = fighter[0];
   const myopponent = opponent[0];
   const [fighterHP, setFighterHP] = useState(myfighter.hp);
@@ -28,21 +28,15 @@ export default function Opponents() {
     if (winner) {
       console.log(`${winner} wins!`);
     const postWinner = async () => {
-      //setLoading(true);
       try {
         const response = await axios.post(`http://localhost:3000/winner/`, {winner: winner, opponent: myopponent, fighter: myfighter});
         console.log(response);
-        //setEntries(response.data);
-        //setLoading(false);
       } catch (error) {
         console.log(error);
-        //setLoading(false);
       }
     };
     postWinner();
-  }
-  
-  }, [winner])
+  }}, [winner])
   
 
   
@@ -94,9 +88,8 @@ export default function Opponents() {
 
   return (
 <div className="flex flex-col justify-center">
-  <a href="/">
-    <p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">POKE Fight</p>
-  </a>
+<div className="flex flex-col justify-center align-middle p-4 bg-blue-800 bg-opacity-50 rounded-lg">
+    <p className="text-center text-2xl md:text-3xl lg:text-4xl mt-1 mb-3"> <a href="/" className="text-gold font-bold">POKE Fight</a></p>
   {fighter.length ? (
     <div className="flex justify-center align-middle gap-20">
       <div className="fighter">
@@ -157,6 +150,7 @@ export default function Opponents() {
       </div>
     </div>
   ) : null}
+</div>
 </div>
   );
 }
