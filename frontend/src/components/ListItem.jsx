@@ -59,9 +59,7 @@ export default function ListItem({ item }) {
           <p className="text-black font-bold font-mono">Type:</p>
           <p>{item.type[0]}</p>
           </div>
-          <div className="sexyBorder mt-5">
-          <button onClick={() => {selectPokemon(item); createOpponent(entries)}}>Select</button>
-          </div>
+          <button className="sexyBorder mt-5" onClick={() => {selectPokemon(item); createOpponent(entries)}}>Select</button>
         </div>
       </div>
     </div>
