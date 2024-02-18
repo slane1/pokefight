@@ -134,17 +134,13 @@ export default function ListView() {
             >
               <p>Groud</p>
             </button>
-            <a href="/">
-              <button
-                className={`justify-self-auto ${
-                  typeFilter
-                    ? "opacity-100 pointer-events-auto"
-                    : "opacity-0 pointer-events-none"
-                }`}
-              >
-                Clear filter
-              </button>
-            </a>
+            {typeFilter && (
+              <a href="/">
+                <button className="justify-self-auto opacity-100 pointer-events-auto">
+                  Clear filter
+                </button>
+              </a>
+            )}
           </div>
         </div>
         <InfiniteScroll
