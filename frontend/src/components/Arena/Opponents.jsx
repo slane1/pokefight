@@ -1,11 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import { FightContext } from "../../contexts/FightContext";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import typeMatchups from "../../utility/types";
 import axios from "axios"
 
 
 export default function Opponents() {
-  const { opponent, fighter } = useContext(FightContext);
+  const { opponent, fighter, createOpponent } = useContext(FightContext);
   const myfighter = fighter[0];
   const myopponent = opponent[0];
   const [fighterHP, setFighterHP] = useState(myfighter.hp);
@@ -28,31 +29,37 @@ export default function Opponents() {
     if (winner) {
       console.log(`${winner} wins!`);
     const postWinner = async () => {
-      //setLoading(true);
       try {
         const response = await axios.post(`http://localhost:3000/winner/`, {winner: winner, opponent: myopponent, fighter: myfighter});
         console.log(response);
-        //setEntries(response.data);
-        //setLoading(false);
       } catch (error) {
         console.log(error);
-        //setLoading(false);
       }
     };
     postWinner();
-  }
-  
-  }, [winner])
-  
-
+  }}, [winner])
   
 
   function percent(value, total) {
     return (value / total) * 100;
   }
 
+
+  function checkType(attacker, defender) {
+    const attackerType = attacker.type.toLowerCase();
+    const defenderType = defender.type.toLowerCase();
+    const multiplier = typeMatchups[attackerType][defenderType];
+    if (multiplier === undefined) {
+      console.log("Fallback triggered");
+        return 1;
+    }
+    console.log(multiplier);
+    return multiplier;
+}
+
   function damageCalculation(attacker, defender) {
-    const damage = Math.floor((attacker.attack / defender.defense) * 10);
+    const multiply = checkType(attacker, defender);
+    const damage = Math.floor(((attacker.attack / defender.defense) * 10) * multiply);
     return damage;
   }
 
@@ -94,9 +101,8 @@ export default function Opponents() {
 
   return (
 <div className="flex flex-col justify-center">
-  <a href="/">
-    <p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">POKE Fight</p>
-  </a>
+<div className="flex flex-col justify-center align-middle p-4 bg-blue-800 bg-opacity-50 rounded-lg">
+    <p className="text-center text-2xl md:text-3xl lg:text-4xl mt-1 mb-3"> <a href="/" className="text-gold font-bold">POKE Fight</a></p>
   {fighter.length ? (
     <div className="flex justify-center align-middle gap-20">
       <div className="fighter">
@@ -129,12 +135,14 @@ export default function Opponents() {
         {winner ? (
           <div className="mt-3">
             <p>The winner is: {winner}</p>
-            <a href="/">Try another Pokemon:</a>
+            <button className="mt-5 text-white"><Link className="text-white" to="/">Try another Pokemon</Link></button>
           </div>
         ) : null}
+        {!winner ? (
         <button className="mt-5" onClick={fight}>
-          Fight!
-        </button>
+        Fight!
+      </button>
+        ) : null}
       </div>
       <div className="opponent">
         <div key={myopponent.id} className="itemcard rounded-md bgBorder-gradient border-gradient">
@@ -157,6 +165,7 @@ export default function Opponents() {
       </div>
     </div>
   ) : null}
+</div>
 </div>
   );
 }
