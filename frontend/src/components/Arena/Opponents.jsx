@@ -93,88 +93,70 @@ export default function Opponents() {
 
 
   return (
-    <div className="flex flex-col justify-center">
-      <a href="/"><p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">POKE Fight</p></a>
-      {fighter.length ? (
-        <div className="flex justify-around gap-20">
-          <div className="fighter w-2/6 flex justify-center">
-            <div
-              key={myfighter.id}
-              className="itemcard rounded-md bgBorder-gradient border-gradient"
-            >
-              <div className="imgcontainer bgBorder-gradient border border-solid p-4 Imageborder-gradient rounded-md bg-white bg-opacity-50">
-                <img src={myfighterart} alt={myfighter.name} />
-                <p className="text-sm text-gold font-bold font-mono">
-                  PokeID {myfighter.id}
-                </p>
-              </div>
-              <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient">
-                <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300">
-                  <h4 className="text-black text-center font-bold text-sm font-mono p-2">
-                    {myfighter.name}
-                  </h4>
-                  <h4 className="text-black text-left text-xs font-mono">
-                    Attack {myfighter.attack}
-                  </h4>
-                  <h4 className="text-black text-left text-xs font-mono">
-                    Defense {myfighter.defense}{" "}
-                  </h4>
-                  <h4 className="text-black text-left text-xs font-mono">
-                    Speed {myfighter.speed}{" "}
-                  </h4>
-                </div>
-                <div className="types text-sm p-3 flex">
-                  <p className="text-black font-bold font-mono">
-                    Type: {myfighter.type}
-                  </p>
-                </div>
-              </div>
+<div className="flex flex-col justify-center">
+  <a href="/">
+    <p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">POKE Fight</p>
+  </a>
+  {fighter.length ? (
+    <div className="flex justify-center align-middle gap-20">
+      <div className="fighter">
+        <div key={myfighter.id} className="itemcard rounded-md bgBorder-gradient border-gradient">
+          <div className="imgcontainer bgBorder-gradient border border-solid p-4 Imageborder-gradient rounded-md bg-white bg-opacity-50">
+            <img src={myfighterart} alt={myfighter.name} />
+            <p className="text-sm text-gold font-bold font-mono">PokeID {myfighter.id}</p>
+          </div>
+          <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient">
+            <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300">
+              <h4 className="text-black text-center font-bold text-sm font-mono p-2">{myfighter.name}</h4>
+              <h4 className="text-black text-left text-xs font-mono">Attack {myfighter.attack}</h4>
+              <h4 className="text-black text-left text-xs font-mono">Defense {myfighter.defense}</h4>
+              <h4 className="text-black text-left text-xs font-mono">Speed {myfighter.speed}</h4>
             </div>
-          </div>
-          
-          <div className="">
-          {fightlog.length ? <div className="w-6/6 h-4/6"> {fightlog.map((round, index) => <p key={index} >{round}</p>)}    </div>  : null}
-          {winner ? <div><p>The winner is: {winner}</p> <a href="/">Try another Pokemon:</a></div> : ""}
-            <button className="w-2/6" onClick={fight}>Fight!</button>
-          </div>
-
-          <div className="opponent">
-            <div
-              key={myopponent.id}
-              className=" itemcard rounded-md bgBorder-gradient border-gradient"
-            >
-              <div className="imgcontainer bgBorder-gradient border border-solid p-4 Imageborder-gradient rounded-md bg-white bg-opacity-50">
-                <img src={myopponentart} alt={myopponent.name} />
-                <p className="text-sm text-gold font-bold font-mono">
-                  PokeID {myopponent.id}
-                </p>
-              </div>
-              <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient">
-                <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300">
-                  <h4 className="text-black text-center font-bold text-sm font-mono p-2">
-                    {myopponent.name}
-                  </h4>
-
-                  <h4 className="text-black text-left text-xs font-mono">
-                    Attack {myopponent.attack}
-                  </h4>
-                  <h4 className="text-black text-left text-xs font-mono">
-                    Defense {myopponent.defense}{" "}
-                  </h4>
-                  <h4 className="text-black text-left text-xs font-mono">
-                    Speed {myopponent.speed}{" "}
-                  </h4>
-                </div>
-                <div className="types text-sm p-3 flex">
-                  <p className="text-black font-bold font-mono">
-                    Type: {myopponent.type}
-                  </p>
-                </div>
-              </div>
+            <div className="types text-sm p-3 flex">
+              <p className="text-black font-bold font-mono">Type: {myfighter.type}</p>
             </div>
           </div>
         </div>
-      ) : null}
+      </div>
+      <div className="flex flex-col text-center align-middle justify-center">
+        {fightlog.length ? (
+          <div className="flex flex-col align-middle justify-center">
+            {fightlog.map((round, index) => (
+              <p key={index}>{round}</p>
+            ))}
+          </div>
+        ) : null}
+        {winner ? (
+          <div className="mt-3">
+            <p>The winner is: {winner}</p>
+            <a href="/">Try another Pokemon:</a>
+          </div>
+        ) : null}
+        <button className="mt-5" onClick={fight}>
+          Fight!
+        </button>
+      </div>
+      <div className="opponent">
+        <div key={myopponent.id} className="itemcard rounded-md bgBorder-gradient border-gradient">
+          <div className="imgcontainer bgBorder-gradient border border-solid p-4 Imageborder-gradient rounded-md bg-white bg-opacity-50">
+            <img src={myopponentart} alt={myopponent.name} />
+            <p className="text-sm text-gold font-bold font-mono">PokeID {myopponent.id}</p>
+          </div>
+          <div className="textcontainer border border-solid border-black p-4 rounded-bl rounded-br bg-red-300 bg-gradient">
+            <div className="textcontainer border border-solid border-white p-4 rounded-bl rounded-br bg-red-300">
+              <h4 className="text-black text-center font-bold text-sm font-mono p-2">{myopponent.name}</h4>
+              <h4 className="text-black text-left text-xs font-mono">Attack {myopponent.attack}</h4>
+              <h4 className="text-black text-left text-xs font-mono">Defense {myopponent.defense}</h4>
+              <h4 className="text-black text-left text-xs font-mono">Speed {myopponent.speed}</h4>
+            </div>
+            <div className="types text-sm p-3 flex">
+              <p className="text-black font-bold font-mono">Type: {myopponent.type}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  ) : null}
+</div>
   );
 }
