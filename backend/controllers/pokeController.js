@@ -3,7 +3,7 @@ import Pokemon from "../models/pokemon.js";
 
 export const getAllPokemon = async (req, res, next) => {
   try {
-    const pokemon = await Pokemon.find();
+    const pokemon = await Pokemon.find().sort({ id: 1 });
     if (!pokemon.length) {
       throw { statusCode: 404, message: "no pokemons found" };
     }

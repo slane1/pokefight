@@ -9,6 +9,7 @@ export default function LastWinner() {
     const fetchWinners = async () => {
       try {
         const response = await axios.get("http://localhost:3000/winner");
+        console.log(response.data);
         setWinList(response.data);
       } catch (error) {
         console.log(error);
