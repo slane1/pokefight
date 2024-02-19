@@ -8,7 +8,7 @@ import ListItem from "./ListItem";
 import { Link, useSearchParams } from "react-router-dom";
 
 export default function ListView() {
-  const { entries, setEntries } = useContext(DataContext);
+  const { entries, setEntries, setApi, setLoading } = useContext(DataContext);
   const { fighter } = useContext(FightContext);
   // useState for storing the new reduced data for infinite scroll component
   const [data, setData] = useState([]);
@@ -29,10 +29,9 @@ export default function ListView() {
   const fetchReduced = () => {
     // initial variables, fetch 30 entries each time
     const initialIndex = data.length;
-    const finalIndex = initialIndex + 16;
+    const finalIndex = initialIndex + 24;
     // slice the entries to get the reduced data
-    const slicedData =
-      entries.length > 1 ? entries.slice(initialIndex, finalIndex) : entries;
+    const slicedData = entries.length > 1 ? entries.slice(initialIndex, finalIndex) : entries;
     // set the data to the state
     setData((prevData) => [...prevData, ...slicedData]);
     // check if entries is populated and that there no more data to fetch, if not, set hasMore to false
@@ -64,6 +63,7 @@ export default function ListView() {
       return prevParams;
     });
   };
+
   useEffect(() => {
     const pokemon = searchParams.get("pokemon");
     const type = searchParams.get("type");
@@ -78,6 +78,7 @@ export default function ListView() {
       );
     }
   }, [searchParams]);
+
 
   //filterpokemon
   const typeFilter = searchParams.get("type");
@@ -131,14 +132,23 @@ export default function ListView() {
           </form>
           <div className="flex gap-10 mb-5">
             <button
-              onClick={() => handleFilterChange("type", "Grass")}
+              onClick={() => {
+                setData([]);
+                setApi("");
+                setApi("pokemon/type/Grass")
+              }}
               className={`simple
             ${typeFilter === "grass" ? "border-b-2 border-gray-600" : ""}`}
             >
               <p>Grass</p>
             </button>
             <button
-              onClick={() => handleFilterChange("type", "Ground")}
+              onClick={() => {
+                setEntries([]);
+                setData([]);
+                setApi("");
+                setApi("pokemon/type/Ground")
+              }}
               className={`simple
             ${typeFilter === "ground" ? "border-b-2 border-gray-600" : ""}`}
             >

@@ -24,6 +24,16 @@ export const getPokemonById = async (req, res, next) => {
   }
 };
 
+export const getPokemonByType = async (req, res, next) => {
+  try {
+    const { type } = req.params;
+    const pokemon = await Pokemon.find({ type: type });
+    res.json(pokemon);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getPokemonDetail = async (req, res, next) => {
   try {
     const { id, detail } = req.params;
