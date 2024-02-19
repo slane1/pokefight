@@ -31,8 +31,24 @@ export default function Opponents() {
         try {
           const response = await axios.post(`http://localhost:3000/winner/`, {
             winner: winner,
-            opponent: myopponent,
-            fighter: myfighter,
+            opponent: {
+              id: myopponent.id,
+              name: myopponent.name,
+              type: myopponent.type,
+              hp: myopponent.hp,
+              attack: myopponent.attack,
+              defense: myopponent.defense,
+              speed: myopponent.speed,
+            },
+            fighter: {
+              id: myfighter.id,
+              name: myfighter.name,
+              type: myfighter.type,
+              hp: myfighter.hp,
+              attack: myfighter.attack,
+              defense: myfighter.defense,
+              speed: myfighter.speed,
+            },
           });
           console.log(response);
         } catch (error) {
