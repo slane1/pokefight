@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import WinnerItem from "./WinnerItem";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -19,28 +20,15 @@ export default function LastWinner() {
   }, []);
 
   return (
-    <div>
+    <div className="">
+      <a href="/"> Back to Pokemon</a>
       {winList.length ? (
-        <div>
-          <a href="/"> Back to Pokemon</a>
-          <table>
-            <thead>
-              <tr>
-                <th>Gewinner</th>
-                <th>Gegner</th>
-                <th>Datum</th>
-              </tr>
-            </thead>
-            <tbody>
+        <div className="mt-5">
               {winList.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.winner}</td>
-                  <td>{item.opponent}</td>
-                  <td>{item.date}</td>
-                </tr>
+                <div key={index} className="mb-5">
+                  <WinnerItem item={item} />
+                </div>
               ))}
-            </tbody>
-          </table>
         </div>
       ) : null}
     </div>

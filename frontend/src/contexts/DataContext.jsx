@@ -29,6 +29,7 @@ export default function DataContextProvider({ children }) {
         entries,
         setEntries,
         loading,
+        setLoading,
         api,
         setApi,
       }}
