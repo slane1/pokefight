@@ -21,7 +21,11 @@ export default function LastWinner() {
 
   return (
     <div className="">
-      <a href="/"> Back to Pokemon</a>
+            <a href="/">
+        <p className="text-center text-gold text-2xl md:text-3xl lg:text-4xl font-bold my-4 md:my-6 lg:my-8">
+          POKE INDEX
+        </p>
+      </a>
       {winList.length ? (
         <div className="mt-5">
               {winList.map((item, index) => (

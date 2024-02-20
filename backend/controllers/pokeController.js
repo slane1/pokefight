@@ -27,7 +27,7 @@ export const getPokemonById = async (req, res, next) => {
 export const getPokemonByType = async (req, res, next) => {
   try {
     const { type } = req.params;
-    const pokemon = await Pokemon.find({ type: type });
+    const pokemon = await Pokemon.find({ type: type }).sort({ id: 1 });
     res.json(pokemon);
   } catch (error) {
     next(error);
