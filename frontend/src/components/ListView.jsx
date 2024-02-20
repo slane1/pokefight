@@ -152,7 +152,31 @@ export default function ListView() {
               className={`simple
             ${typeFilter === "ground" ? "border-b-2 border-gray-600" : ""}`}
             >
-              <p>Groud</p>
+              <p>Ground</p>
+            </button>
+            <button
+              onClick={() => {
+                setEntries([]);
+                setData([]);
+                setApi("");
+                setApi("pokemon/type/Fire")
+              }}
+              className={`simple
+            ${typeFilter === "ground" ? "border-b-2 border-gray-600" : ""}`}
+            >
+              <p>Fire</p>
+            </button>
+            <button
+              onClick={() => {
+                setEntries([]);
+                setData([]);
+                setApi("");
+                setApi("pokemon/type/Water")
+              }}
+              className={`simple
+            ${typeFilter === "ground" ? "border-b-2 border-gray-600" : ""}`}
+            >
+              <p>Water</p>
             </button>
             {typeFilter && (
               <a href="/">
